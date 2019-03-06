@@ -1,0 +1,53 @@
+<div class="header-container" [ngClass]="{'gl-fluid-container': (pageTitle | async) == 'Home'}">
+  <div class="logo"></div>
+    
+  <ng-container [ngSwitch]="pageTitle | async">
+    <gl-search 
+      [options]='searchOptions' 
+      (callback)='search($event)'
+      *ngSwitchCase="'Home'"
+      class="search"
+    >
+    </gl-search>
+
+    <div class="title" *ngSwitchDefault>
+      {{pageTitle | async}}
+    </div>
+  </ng-container>
+  
+
+  <div class="lock-button" 
+    [ngClass]="{'lock': lockWin}" 
+    (click)="toggleLock()"
+    *ngIf="showLockButton"></div>
+  
+  <div class="control-pannel">
+    <div class="icon-btn icon-Minus" WinControl operation="minimize"></div>
+    <div class="icon-btn" 
+      [ngClass]="{'icon-exit_fullscreen': isFullScreen, 'icon-fullscreen': !isFullScreen}" 
+      WinControl 
+      operation="fullscreen"
+      (callback)="changeWinSize($event)"
+    ></div>
+    <div class="icon-btn icon-Close" WinControl operation="close"></div>
+    <span class="clear"></span>
+  </div>
+
+  <div *ngIf="(pageTitle | async) == 'Home'" class="profile-wrapper"> 
+    <gl-dropdown [title]="(userInfo | async).FullName" [titleWithBg]="false">
+      <ul>
+        <li>link1</li>
+        <li>link2</li>
+        <li>link3</li>
+        <li>link4</li>
+        <li>link5</li>
+        <li>link6</li>
+      </ul>
+    </gl-dropdown>
+
+    <div class="profile-img">
+      <img src="assets/user_pic.jpg"/>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>

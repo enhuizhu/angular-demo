@@ -1,0 +1,50 @@
+<div class="data-grid-contaier">
+  <gl-data-grid 
+    [dataSource]="tradeData" 
+    [dataDefinition]="defines"
+    [height]="gridHeight"
+    exportFileName="gmex"
+    [dateFormat]="dateFormat"
+    [tempestStatusField]="tempestLoadedField"
+    [loadedToTempestMsg]="tempestStatusMap.Success.Description"
+    [tempestLoadedValue]="[tempestStatusMap.Success.Id, tempestStatusMap.Pending.Id]"
+    [showGroupPanel]="true"
+    [useNativeScrollBar]="true"
+    #dataGrid
+  >
+  </gl-data-grid>
+  
+  <gl-loader *ngIf="isLoadingData"></gl-loader>
+  
+  <div class="data-grid-footer">
+    <div class="control-panel pull-right">
+      <gl-tool-tip 
+        message="Export selected rows to Excel spreadsheet" 
+        type="button"
+        btnClass="secondary"
+        btnValue="Export"
+        btnIcon="excel"
+        position="top"
+        [isDisabled]="!dataGrid.dataGrid.selectedRowKeys || dataGrid.dataGrid.selectedRowKeys.length <= 0"
+        (clickCallback)="export()"
+      >
+      </gl-tool-tip>
+    </div>
+  
+    <div class="message bold pull-right" 
+    >
+      <ng-container [ngPlural]="(dataGrid.dataGrid.selectedRowKeys && dataGrid.dataGrid.selectedRowKeys.length) || 0">
+        <ng-template ngPluralCase="=0">
+          No rows selected
+        </ng-template>
+        <ng-template ngPluralCase="=1">
+          1 row selected
+        </ng-template>
+        <ng-template ngPluralCase="other">
+          {{dataGrid.dataGrid.selectedRowKeys.length}} rows selected
+        </ng-template>
+      </ng-container>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>

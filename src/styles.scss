@@ -1,0 +1,87 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~glencore-common-style/index.css";
+@import "~glencore-common-style/variable";
+
+body {
+  overflow-y: hidden;
+}
+
+gl-tabs {
+  .tab-content {
+    height: calc(100vh - 137px) !important;
+    padding: 10px;
+  }
+}
+
+.profile-wrapper {
+  .dropdown-box {
+    color: $main-text-color;
+  }
+}
+
+.card {
+  .dx-toolbar {
+    background-color: transparent;
+  }
+}
+
+.gmax-container {
+  .gl-dropdown {
+    width: 100%;
+
+    .dropdown-title {
+      .icon-Arrow-Down {
+        float: right;
+      }
+    }
+
+    .dropdown-box {
+      min-width: 100%;
+    }
+  }
+}
+
+.data-grid-footer {
+  margin-top: 10px;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  padding: 10px;
+  background: $white;
+  border-radius: 0px 0px 4px 4px;
+  margin-top: 10px;
+
+  .control-panel {
+    .btn {
+      min-width: 100px;
+      text-align: center;
+      
+      &:first-child {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .message {
+    padding-top: 5px;
+    margin-right: 13px;
+  }
+}
+
+.gl-list-item-wrapper {
+  font-size: 12px;
+
+  .number {
+    font-weight: 600;
+  }
+}
+
+
+.table {
+  app-autocomplete-strategy {
+    .dx-placeholder {
+      top: -5px;
+    }
+  }
+}

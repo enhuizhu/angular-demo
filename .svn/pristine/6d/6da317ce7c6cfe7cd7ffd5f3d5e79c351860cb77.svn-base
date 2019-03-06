@@ -1,0 +1,12 @@
+{
+    "uri": {
+        "odata": "http://gbldncommoniisdev1.anyaccess.net:82/OilHubOData",
+        "entitlements": "http://gbldncommoniisdev1.anyaccess.net:82/entitlements",
+        "rest": "http://gbldncommoniisdev1.anyaccess.net:82/OilHubRest",
+        "calendar": "http://gbldncommoniisdev1.anyaccess.net:82/PLCalendar",
+        "testApi": "http://localhost:61654/api",
+        "socketUrl": "http://localhost:7979"
+    },
+    "startup_app": null,
+    "shortcut": {}
+}

@@ -1,0 +1,108 @@
+@import "~glencore-common-style/variable";
+
+.header-container {
+  position: relative;
+  background: $primary;
+
+  font-weight: 700;
+  color: $white;
+  justify-content: space-between;
+  -webkit-app-region: drag;
+  width: 100%;
+  
+  .search, .logo, .title {
+    float: left;
+  }
+
+  &.gl-fluid-container {
+    .logo {
+      margin: 6px;
+    }
+
+    .control-pannel {
+      top: 5px;
+    }
+  }
+  
+  .logo {
+    width: 24px;
+    height: 24px;
+    background-image: url('/assets/icons-oil.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    margin: 3px;
+  }
+
+  .search {
+    margin-left: 173px;
+    -webkit-app-region: no-drag;
+  }
+
+  .title {
+    font-family: 'Montserrat', sans-serif;
+    padding-top: 5px;
+    padding-left: 7px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .profile-wrapper {
+    -webkit-app-region: no-drag;
+    position: relative;
+    top: 5px;
+    right: 26px;
+    float: right;
+
+    .profile-img {
+      display: inline-block;
+      vertical-align: middle;
+
+      img {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        margin-left: 10px;
+      }
+    }
+  }
+
+  .control-pannel {
+    right: 0px;
+    top: 4px;
+    position: relative;
+    float: right;
+    -webkit-app-region: no-drag;
+    
+    & > div {
+      cursor: pointer
+    }
+
+    .icon-btn {
+      color: $white;
+      float: left;
+      font-size: 23px;
+      margin-right: 7px;
+    }
+  }
+
+  .lock-button {
+    position: absolute;
+    top: 14px;
+    right: 79px;
+    background: $white;
+    border: solid 1px $black;
+    padding: 5px;
+    cursor: pointer;
+
+    &::after {
+      content: 'Unlock';
+    }
+    
+    &.lock {
+      &::after {
+        content: 'Lock';
+      }
+    }
+  }
+}

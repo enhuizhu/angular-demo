@@ -1,0 +1,20 @@
+<dx-autocomplete
+  placeholder="Type strategy number"
+  [(value)]="selectedStrategy"
+  [dataSource]="items"
+  (onInput)="onInput($event)"
+  height = "26"
+  valueExpr="Number"
+  [searchExpr] = "['Number', 'Name']"
+  (onItemClick)="onValueChanged($event)"
+  #autoCompelete
+>
+  <div *dxTemplate="let item of 'item'; let i = index">
+    <gl-loader *ngIf="isLoading && i <=0" [size]="loaderSize"></gl-loader>
+    <app-highlight 
+      [search]="startStr" 
+      [numberValue]="item.Number"
+      [nameValue]="item.Name"
+    ></app-highlight>
+  </div>
+</dx-autocomplete>

@@ -1,0 +1,42 @@
+<div class="data-grid-contaier">
+    <gl-data-grid 
+      [dataSource]="dataSource"
+      [showSelections]="false" 
+      [dataDefinition]="defines"
+      [height]="gridHeight"
+      exportFileName="swap"
+      [dateFormat]="dateFormat"
+      [showGroupPanel]="true"
+      [useNativeScrollBar]="true"
+      [columnChooserVisible]="true"
+      #dataGrid
+    >
+    </gl-data-grid>
+    
+    <gl-loader *ngIf="isLoadingData"></gl-loader>
+    
+    <div class="data-grid-footer">
+      <div class="control-panel pull-right">
+        <gl-tool-tip 
+          message="Discard Changes" 
+          type="button"
+          btnClass="tertiary"
+          btnValue="Cancel"
+          position="top"
+          (clickCallback)="cancel()"
+        >
+        </gl-tool-tip>
+        <gl-tool-tip 
+          message="Save Changes" 
+          type="button"
+          btnClass="primary"
+          btnValue="Save"
+          position="top"
+          (clickCallback)="saveChanges()"
+        >
+        </gl-tool-tip>
+      </div>
+      
+      <div class="clear"></div>
+    </div>
+  </div>

@@ -1,0 +1,11 @@
+.form *:not(.btn){
+  font-size: 15px;
+}
+
+.checkcontainer {
+  margin-top: 17px;
+  
+  &.space-under-bottom {
+    margin-bottom: 17px;
+  }
+}

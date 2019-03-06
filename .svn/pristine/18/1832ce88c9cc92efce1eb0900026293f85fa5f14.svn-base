@@ -1,0 +1,27 @@
+{
+    "devtools_port": 9090,
+    "startup_app": {
+        "name": "oilHub v1.0",
+        "url": "http://localhost:8080/index.html",
+        "uuid": "oilHub v1.0",
+        "applicationIcon": "http://localhost:8080/assets/icons-oil.ico",
+        "autoShow": true,
+        "backgroundColor": "black",
+        "contextMenu": true,
+        "defaultWidth": 1440,
+        "defaultHeight": 800,
+        "shadow": true,
+        "frame": false
+    },
+    "runtime": {
+        "arguments": "",
+        "version": "beta"
+    },
+    "splashScreenImage": "http://localhost:8080/assets/splash.jpg",
+    "shortcut": {
+        "company": "Glencore",
+        "description": "oilHub App",
+        "icon": "http://localhost:8080/assets/icons-oil.ico",
+        "name": "oilHub"
+    }
+}

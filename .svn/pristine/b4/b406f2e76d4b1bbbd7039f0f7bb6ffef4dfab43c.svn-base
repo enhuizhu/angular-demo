@@ -1,0 +1,139 @@
+<div class="container">
+  <div class="tabs-bar">
+    <gl-tabs 
+      [tabTitles]="tabTitles" 
+      [showTabContent]="false"
+      type="link"
+      theme="light-blue"
+    >
+    </gl-tabs>
+  </div>
+
+  <div class="left-side-bar padding no-bg">
+    <div class="filter-container">
+      <div class="filter-title bold">Search</div>
+      <gl-dropdown 
+        leftSideIcon="icon-Search-Saved"
+        className="has-hover-state"
+        [title]="'Saved searches'" 
+        [closeWhenClick]="false" 
+        position="right"
+        triggerMethod="mouseover"
+      >
+        <div class="gl-list">
+          <div class="item" *ngFor="let search of savedSearchs">
+            <a [routerLink]="path" [queryParams]="{name: search}">{{search}}</a>
+          </div>
+          <div class="line"></div>
+          <div class="item">
+            <span class="icon icon-Settings"></span>
+            Manage Saved Searchs
+          </div>
+        </div>
+      </gl-dropdown>
+
+      <gl-dropdown 
+        leftSideIcon="icon-Plus"
+        className="has-hover-state"
+        [title]="'Add fields'" 
+        [closeWhenClick]="false"
+        [noMax]="true"
+        position="right"
+        triggerMethod="mouseover"
+      >
+      <div>
+        <dx-check-box
+          [value]="selectAll"
+          [width]="150"
+          text="Select All"
+          class="gl-list"
+          (onValueChanged)="onSearchAllChanged($event)"
+        ></dx-check-box>
+      </div>
+      <dx-list
+        [dataSource]="filters"
+        [allowItemDeleting]="false"
+        [selectionMode]="'allPages'"
+        [selectAllMode]="'all'"
+        itemDeleteMode="toggle"
+        [showSelectionControls]="true"
+        selectionMode="multiple"
+        searchMode="contains"
+        [searchEnabled]="true"
+        [searchExpr] = "'label'"
+        [(selectedItems)]="selectedFilters"
+        (onSelectionChanged)="onSearchOptionChanged($event)"
+        class="gl-list"
+        #searchFields
+      >
+
+        <div *dxTemplate="let item of 'item'">
+          {{item.label}}
+        </div>
+      </dx-list>
+      </gl-dropdown>
+    </div>
+    <dx-scroll-view
+      height="calc(100vh - 184px)"
+      width="100%"
+      direction="both">
+      <div class="filter-container" *ngFor="let filter of selectedFilters">
+        <div class="filter-title">{{filter.label}}</div>
+        <ng-container [ngSwitch]="filter.type">
+          <app-tag-autocompelete-strategy 
+            [searchExpr]="filter.searchExpr"
+            [displayExpr]="filter.displayExpr"
+            [valueExpr]="filter.valueExpr"
+            [highLightFirstPart]="filter.highLightFirstPart"
+            [highLightSecondPart]="filter.highLightSecondPart"
+            [dataServiceName]="filter.dataServiceName"
+            [key]="filter.key"
+            [getAllRecord]="filter.getAllRecord"
+            *ngSwitchCase="'tags'"
+          >
+          </app-tag-autocompelete-strategy>
+          <div *ngSwitchCase="'date'">
+            this is date component
+          </div>
+        </ng-container>
+      </div>
+  
+      <div class="buttons-pannel">
+        <div class="btn secondary" 
+          id="saveBtn"
+          (click)="showPopOver()"
+        >
+          <span class="icon icon-Save"></span>
+        </div>
+        <div class="btn primary" (click)="changeStrategies()">
+          <span class="icon icon-Search"></span>
+        </div>
+        <dx-popover
+          target="#saveBtn" 
+          position="top"
+          [width]="300"
+          [shading]="true"
+          shadingColor="rgba(0, 0, 0, 0.5)"
+          #popover
+        >
+          <div *dxTemplate="let data of 'content'">
+            <app-query-form 
+              (closeCallback)="popover.instance.hide()" 
+              (saveCallback)="saveSearch($event)"
+              [hasSearchName]="!!searchName"
+              [originalSearchName]="searchName"
+            >
+            </app-query-form>  
+          </div>
+        </dx-popover>
+      </div>
+    </dx-scroll-view>
+
+  </div>
+  <div class="content data-view">
+    <div class="card">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>

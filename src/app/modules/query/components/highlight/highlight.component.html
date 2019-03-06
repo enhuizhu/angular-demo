@@ -1,0 +1,9 @@
+<span [title]="numberValue + ' ' + nameValue" class="gl-list-item-wrapper">
+  <span class="number" *ngIf="numberValue">
+    <span class="highlight">{{startNumber}}</span>{{numberValue.substr(startNumber.length)}} 
+  </span>
+  &nbsp;
+  <span class="string" *ngIf="nameValue">
+    <span class="highlight">{{startStr}}</span>{{nameValue.substr(startStr.length)}}
+  </span> 
+</span>

@@ -1,0 +1,94 @@
+{
+  "TradeNumber": {
+    "name": "Trade Number",
+    "isUnique": true,
+    "allowEdit": false
+  },
+  "StrategyRef": {
+    "name": "StrategyRef",
+    "allowEdit": false,
+    "componentEditable": true,
+    "dependentField": "Type",
+    "dependentValue": ["Swap", "Basic Swap"],
+    "minWidth": 200
+  },
+  "ContractDate": {
+    "name": "Contract Date",
+    "type": "date",
+    "allowEdit": false
+  },
+  "Type": {
+    "name": "Type",
+    "allowEdit": false
+  },
+  "Counterparty": {
+    "name": "Counterparty",
+    "allowEdit": false
+  },
+  "BuySell": {
+    "name": "Buy/Sell",
+    "switchButton": true,
+    "checked": "Sell",
+    "unChecked": "Buy",
+    "allowEdit": false
+  },
+  "Quantity": {
+    "name": "Quantity",
+    "allowEdit": false
+  },
+  "UoM": {
+    "name": "UoM",
+    "allowEdit": false
+  },
+  "FixedPrice": {
+    "name": "Fixed Price",
+    "dependentField": "Type",
+    "dependentValue": ["Swap"],
+    "allowEdit": true
+  },
+  "PriceCurrency": {
+    "name": "Price Currency",
+    "allowEdit": false,
+    "hide": true
+  },
+
+  "basic1": {
+    "type": "group",
+    "name": "Basic 1",
+    "children": {
+      "BuyFloating": {
+        "name": "Buy Floating"
+      },
+      "Premium1": {
+        "name": "Buy premium",
+        "dependentField": "Type",
+        "dependentValue": ["Basic Swap"],
+        "allowEdit": true
+      }
+    } 
+  },
+
+  "basic2": {
+    "type": "group",
+    "name": "Basic 2",
+    "children": {
+      "SellFloating": {
+        "name": "Sell Floating"
+      },
+      "Premium": {
+        "name": "Sell premium",
+        "dependentField": "Type",
+        "dependentValue": ["Basic Swap"],
+        "allowEdit": true        
+      }
+    } 
+  },
+
+  "BSCurrency": {
+    "name": "BS Currency"
+  },
+  
+  "BSUoM": {
+    "name": "BSUoM"
+  }
+}

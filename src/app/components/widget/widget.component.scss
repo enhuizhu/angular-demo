@@ -1,0 +1,48 @@
+@import "~glencore-common-style/variable";
+
+.widget-wrapper {
+  .tool-box {
+    margin-bottom:  10px;
+    padding: 3px;
+
+    a {
+      color: $main-text-color;
+    }
+
+    .icon-move {
+      margin-right: 13px;
+    }
+
+    .icon:hover {
+      color: $active-color;
+      cursor: pointer;
+    }
+
+    .controle-btns {
+      display: none;
+    }
+  }
+
+  &:hover {
+    .tool-box {
+      .controle-btns {
+        display: block;
+        animation: showTool 1s linear;
+      }
+    }
+  }
+
+  @keyframes showTool {
+    0% {
+      opacity: 0;
+    }
+
+    20% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+}

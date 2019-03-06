@@ -1,0 +1,49 @@
+<div class="widget-wrapper">
+  <div class="tool-box">
+    <span class="title bold pull-left">{{mainTitle}}</span>
+    <span class="controle-btns pull-right">
+      <span class="icon icon-move" 
+        [id]="moveId"
+        (mouseenter)="showMoveTip()"
+        (mouseleave)="hideMoveTip()"
+      ></span>
+      <a 
+        [routerLink]="newWinLink" 
+        target="_blank" 
+        openInNewWin>
+        <span class="icon icon-new-win" 
+          [id]="openId"
+          (mouseenter)="toogleNewWinTip()"
+          (mouseleave)="toogleNewWinTip()"
+        ></span>
+      </a>
+      <dx-tooltip 
+        [target]="'#' + moveId" 
+        [(visible)]="moveVisible"
+        class="primary"
+      >
+        <div *dxTemplate="let data = data of 'content'">
+            Drag to re-order widgets
+        </div>
+      </dx-tooltip>
+      <dx-tooltip 
+        [target]="'#' + openId" 
+        [(visible)]="openVisible"
+        class="primary"
+      >
+        <div *dxTemplate="let data = data of 'content'">
+          Launch in new window
+        </div>
+      </dx-tooltip>
+    </span>
+    <div class="clear"></div>
+  </div>
+  <div class="widget">
+    <div class="title bold" *ngIf="subTitle">
+      {{subTitle}}
+    </div>
+    <div class="widget-body {{bodyClass}}">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

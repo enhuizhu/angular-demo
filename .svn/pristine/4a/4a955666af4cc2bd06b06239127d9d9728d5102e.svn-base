@@ -1,0 +1,187 @@
+<div class="home-container container">
+  
+  <div class="left-side-bar">
+    <ul>
+      <li>
+        <a routerLink="/" class="active">
+          <span class="icon icon-home"></span> 
+          Home
+        </a>
+      </li>
+
+      <li>
+        <a 
+          routerLink="/gmex" 
+          target="_blank" openInNewWin [config]="gmexWinConfig">
+          <span class="icon icon-list"></span> 
+          GMEX
+        </a>
+      </li>
+  
+      <li>
+        <a 
+          routerLink="/report/watch-list" 
+          target="_blank" 
+          openInNewWin tearOutWindow [config]="winConfig">
+          <span class="icon icon-list"></span> 
+          Ops Watchlist
+        </a>
+      </li>
+
+      <li>
+        <a 
+          routerLink="/report/upcoming" 
+          target="_blank" 
+          openInNewWin tearOutWindow [config]="winConfig">
+          <span class="icon icon-trade"></span> 
+          Trades
+        </a>
+      </li>
+
+      <li>
+        <a 
+          routerLink="/report/compeleted" 
+          target="_blank" 
+          openInNewWin tearOutWindow [config]="winConfig">
+          <span class="icon icon-invoices"></span> 
+          Invoices
+        </a>
+      </li>
+
+      <li>
+          <a 
+            routerLink="/report/compeleted" 
+            target="_blank" 
+            openInNewWin tearOutWindow [config]="winConfig">
+            <span class="icon icon-contracts"></span> 
+            Contracts
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  <div class="content">
+    <div class="tabs tabs-bar">
+      <gl-tabs 
+        [tabTitles]="tabTitles" 
+        [showTabContent]="false"
+        type="text"
+        theme="light-blue"
+        (switchCallbck)="onTabSwitch($event)">
+      </gl-tabs>
+    </div>
+
+    <div class="widgets" *ngIf="orders">
+      <ng-container *ngFor="let id of orders" [ngSwitch]="id">
+          <div class="col-xs-6" id="contracts" *ngSwitchCase="'contracts'">
+            <app-widget mainTitle="Contracts" subTitle="Outstanding">
+              <div class="flex-container">
+                <div class="pie-chart-container">
+                  <div class="bold text-center">Sale Trades</div>
+                  <gl-pie-chart 
+                    [data]="sellPieData"
+                    [showLengeds]="false"
+                  >
+                  </gl-pie-chart>
+                  <gl-loader *ngIf="isLoadingSaleContract" [hasBg]="false"></gl-loader>            
+                </div>
+                <div class="pie-chart-container">
+                  <div class="bold text-center">Buy Trades</div>
+                  <gl-pie-chart 
+                    [data]="buyPieData"
+                    [showLengeds]="false"
+                  >
+                  </gl-pie-chart>
+                  <gl-loader *ngIf="isLoadingBuyContract" [hasBg]="false"></gl-loader>            
+                </div>
+              </div>
+            </app-widget>
+          </div>
+            
+          <div class="col-xs-6" id="invoice" *ngSwitchCase="'invoice'">
+            <app-widget mainTitle="Invoice" subTitle="Invoice To Send Today" bodyClass="no-padding">
+              <dx-data-grid
+                [dataSource]="invoiceData"
+                height="242px"
+                class="table"
+                [showColumnLines]="false"
+                [showRowLines]="true"
+                [showBorders]="true"
+                [rowAlternationEnabled]="true"
+              >
+                <dxi-column
+                  dataField="CounterpartyName"
+                  caption="Counter Party"
+                  [allowSorting]="false"
+                >
+                </dxi-column>
+                <dxi-column
+                  dataField="SettlementAmount"
+                  caption="Settlement Amount"
+                  cellTemplate="amountTemplate"
+                  [allowSorting]="false"
+                  alignment="right"
+                >
+                </dxi-column>
+    
+                <dxi-column
+                  dataField="SettlementAmount"
+                  caption=""
+                  [allowSorting]="false"
+                  cellTemplate="mailTemplate"
+                  alignment="right"
+                >
+                </dxi-column>
+    
+                <div *dxTemplate="let info of 'amountTemplate'">
+                  <div>
+                    {{info.value | currency:'GBP'}}
+                  </div>
+                </div>
+    
+                <div *dxTemplate="let info of 'mailTemplate'">
+                    <div (click)="sendInvoice(info)" *ngIf="!info.data.isLoading">
+                      <span class="icon icon-Send"></span>
+                    </div>
+    
+                    <div class="icon" *ngIf="info.data.isLoading">
+                      <gl-loader *ngIf="info.data.isLoading"></gl-loader>  
+                    </div>
+                </div>
+              </dx-data-grid>
+              <gl-loader *ngIf="isLoadingInvoices" [hasBg]="false"></gl-loader>
+            </app-widget>
+          </div>
+      
+          <div class="col-xs-12" id="trade-data" *ngSwitchCase="'trade-data'">
+            <app-widget mainTitle="Trading Data" bodyClass="no-padding">
+              <dx-data-grid
+                [dataSource]="tradeData"
+                height="300px"
+                class="table"
+                [showColumnLines]="false"
+                [showRowLines]="true"
+                [showBorders]="false"
+                [rowAlternationEnabled]="true"
+              >
+              <dxo-scrolling mode="infinite"></dxo-scrolling>
+              </dx-data-grid>
+              <gl-loader *ngIf="isLoadingTrades" [hasBg]="false"></gl-loader>
+            </app-widget>
+          </div>
+      
+          <div class="col-xs-12" id="trade-chart" *ngSwitchCase="'trade-chart'">
+            <app-widget mainTitle="Trade Line Chart" subTitle="Trade Chart">
+              <div>
+                <gl-line-chart [data]="tradeChartData"></gl-line-chart>
+                </div>
+              <gl-loader *ngIf="isLoadingTrades" [hasBg]="false"></gl-loader>
+            </app-widget>
+          </div>
+      </ng-container>
+    </div>
+
+  </div>
+
+  <div class="clear"></div>
+</div>

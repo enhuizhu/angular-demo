@@ -1,0 +1,51 @@
+<div class="gmax-container container">
+  <div class="tabs-bar">
+    <gl-tabs 
+      [tabTitles]="tabTitles" 
+      [showTabContent]="false"
+      type="link"
+      theme="light-blue"
+    >
+    </gl-tabs>
+  </div>
+  <div class="left-side-bar padding no-bg">
+    <div class="filter-title">Report Date</div>
+    <gl-dropdown 
+      [title]="dateRangeTitle" 
+      [closeWhenClick]="false" 
+      [noMax]="true"
+      #dropdown
+    >
+      <gl-date-range-picker (dateRangeSelected)="onDateRangeSelected($event)">
+      </gl-date-range-picker>
+    </gl-dropdown>
+
+    <div class="filter-container form">
+      <div class="filter-title">Loaded to Tempest</div>
+      <label class="checkcontainer">
+        Loaded
+        <input type="checkbox" [(ngModel)]="loadedSelected" (change)="loadedChange()">
+        <span class="checkmark"></span>
+      </label>
+      <label class="checkcontainer">
+        Not loaded
+        <input type="checkbox" [(ngModel)]="notLoadedSelected" (change)="loadedChange()">
+        <span class="checkmark"></span>
+       </label>
+    </div>
+
+    <div class="filter-container">
+      <div class="btn primary transparent" (click)="refresh()">
+        <span class="icon icon-Refresh"></span>
+        Refresh
+      </div>
+    </div>
+  </div>
+  <div class="content data-view">
+    <div class="card">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>
+  

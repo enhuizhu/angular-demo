@@ -1,0 +1,22 @@
+<dx-tag-box
+  [dataSource]="items"
+  [searchEnabled]="true"
+  [acceptCustomValue]="true"
+  [searchExpr] = "searchExpr"
+  [displayExpr]="displayExpr"
+  [valueExpr]="valueExpr"
+  [value]="value"
+  itemTemplate="stragegyTemp"
+  (onInput)="onInput($event)"
+  (onValueChanged)="valuesChange($event)"
+  #autoCompelete
+>
+  <div *dxTemplate="let item of 'stragegyTemp'; let i = index;">
+    <gl-loader *ngIf="isLoading && i <=0" [size]="loaderSize"></gl-loader>
+    <app-highlight 
+      [search]="startStr" 
+      [numberValue]="item[highLightFirstPart]"
+      [nameValue]="highLightSecondPart ? item[highLightSecondPart] : ''"
+    ></app-highlight>
+  </div>
+</dx-tag-box>

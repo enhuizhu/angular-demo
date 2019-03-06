@@ -1,0 +1,28 @@
+@import "~glencore-common-style/variable";
+
+.gmax-container {
+  gl-dropdown {
+    margin-top: 10px;
+    display: block;
+  }
+  
+  .filter-container {
+    .btn {
+      width: 100%;
+    }
+  }
+
+  .filter-title {
+    font-size: 12px;
+  }
+
+  .form {
+    padding: 0;
+    .checkcontainer {
+      margin-top: 12px;
+      .checkmark {
+        top: -4px;
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+<form class="form no-padding" [formGroup]="form">
+  <div class="form-title bold">
+    Save Search
+    <div class="form-close" (click)="close()">
+      <div class="icon icon-Close"></div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="form-body">
+    <div class="form-section">
+      <label class="title">
+        Save search fields and column setup
+      </label>
+      <ng-container *ngIf="hasSearchName">
+        <label class="checkcontainer">
+            Update '{{originalSearchName}}'
+            <input type="radio" formControlName="updateExsit" [value]="EXSIT"/>
+            <span class="checkmark"></span>
+          </label>
+          <label class="checkcontainer space-under-bottom">
+              Save as new search
+            <input type="radio" formControlName="updateExsit" [value]="NEW"/>
+            <span class="checkmark"></span>
+          </label>
+      </ng-container>
+      <input 
+        type="text" 
+        formControlName="searchName" 
+        placeholder="Name"
+        *ngIf="!hasSearchName || form.value.updateExsit == NEW"
+      />
+    </div>
+  </div>
+  <div class="form-footer">
+    <div class="btn primary" (click)="save()">Save</div>
+    <div class="btn tertiary" (click)="cancel()">Cancel</div>
+    <div class="clear"></div>
+  </div>
+</form>

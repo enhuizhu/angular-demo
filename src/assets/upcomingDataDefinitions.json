@@ -1,0 +1,114 @@
+{
+  "TradeNumber": {
+    "name": "TradeNumber",
+    "isUnique": true,
+    "allowEdit": false
+  },     
+  "BaseFutureContractCode": {
+    "name": "BaseFutureContractCode",
+    "allowEdit": false
+  },
+  "BuySell": {
+    "name": "BuySell",
+    "allowEdit": false
+  },
+  "ClearingAccountCode": {
+    "name": "ClearingAccountCode",
+    "allowEdit": false
+  },
+  "ClearingBrokerCommission": {
+    "name": "ClearingBrokerCommission",
+    "allowEdit": false
+  },
+  "ClearingBrokerCommissionCostOrRevenue": {
+    "name": "ClearingBrokerCommissionCostOrRevenue",
+    "allowEdit": false
+  },  
+  "ClearingBrokerCommissionUnitOfMeasurementCode": {
+    "name": "ClearingBrokerCommissionUnitOfMeasurementCode",
+    "allowEdit": false
+  },  
+  "FloorBrokerCode": {
+    "name": "FloorBrokerCode",
+    "allowEdit": false
+  },  
+  "FloorBrokerCommission": {
+    "name": "FloorBrokerCommission",
+    "allowEdit": false
+  },  
+  "FloorBrokerCommissionCostOrRevenue": {
+    "name": "FloorBrokerCommissionCostOrRevenue",
+    "allowEdit": false
+  },  
+  "FloorBrokerCommissionCurrencyCode": {
+    "name": "FloorBrokerCommissionCurrencyCode",
+    "allowEdit": false
+  },  
+  "FloorBrokerCommissionLotBased": {
+    "name": "FloorBrokerCommissionLotBased",
+    "allowEdit": false
+  },  
+  "HedgeTradeNumber": {
+    "name": "HedgeTradeNumber",
+    "allowEdit": false
+  },    
+  "InternalCompanyCode": {
+    "name": "InternalCompanyCode",
+    "allowEdit": false
+  },    
+  "IsConfirmed": {
+    "name": "IsConfirmed",
+    "allowEdit": false
+  },    
+  "IsHedge": {
+    "name": "IsHedge",
+    "allowEdit": false
+  },    
+  "LastUpdatedDateTime": {
+    "name": "LastUpdatedDateTime",
+    "allowEdit": false,
+    "type": "DateTime"
+  },    
+  "Lots": {
+    "name": "Lots",
+    "allowEdit": false
+  },    
+  "Matches": {
+    "name": "Matches",
+    "allowEdit": false
+  },    
+  "PeriodCode": {
+    "name": "PeriodCode",
+    "allowEdit": false
+  },   
+  "PostedDateTime": {
+    "name": "PostedDateTime",
+    "allowEdit": false,
+    "type":"DateTime"
+  },    
+  "Price": {
+    "name": "Price",
+    "allowEdit": false
+  },    
+  "StrategyNumber": {
+    "name": "StrategyNumber",
+    "allowEdit": false
+  },
+  "TheirReference": {
+    "name": "TheirReference",
+    "allowEdit": false
+  },     
+  "TradeDateTime": {
+    "name": "TradeDateTime",
+    "allowEdit": false,
+    "type":"DateTime"
+  },
+  "TradeStatus": {
+    "name": "TradeStatus",
+    "allowEdit": false
+  },     
+  "TraderInitials": {
+    "name": "TraderInitials",
+    "allowEdit": false
+  }       
+}

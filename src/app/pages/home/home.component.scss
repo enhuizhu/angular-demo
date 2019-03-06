@@ -1,0 +1,88 @@
+@import "~glencore-common-style/variable";
+
+.home-container {
+  .left-side-bar {
+    ul {
+      list-style: none;
+      margin-left: -27px;
+
+      li {
+        margin-bottom: 5px;
+        a {
+          display: block;
+          text-decoration: none;
+          color: $main-text-color;
+          font-size: 16px;
+          font-weight: 600;
+          padding: 5px;
+          opacity: 0.5;
+
+          .icon {
+            vertical-align: text-bottom;
+            margin-right: 7px;
+          }
+          
+          &:hover, &.active {
+            color: $active-color;
+            border-right: solid 4px $active-color;
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+
+  .content {
+    .tabs {
+      text-align: center;
+
+      gl-tabs {
+        display: inline-block;
+      }
+    }
+
+    padding-bottom: 100px;
+  }
+
+  .widgets {
+    [class^=col-] {
+      padding: 31px 31px 0 31px;
+    }
+    
+    .trade-data-panel {
+      height: 300px;
+    }
+
+    .no-padding-right {
+      padding-right: 0;
+    }
+
+    .flex-container {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+
+      .pie-chart-container {
+        max-width: 169px;
+        width: 40%;
+        position: relative;
+
+        .bold {
+          margin-bottom: 10px;
+        }
+      }
+    }
+
+    .table {
+      .icon-Send {
+        color: $primary;
+        cursor: pointer;
+      }
+
+      .icon {
+        position: relative;
+        margin-right: 17px;
+      }
+    }
+  }
+}
